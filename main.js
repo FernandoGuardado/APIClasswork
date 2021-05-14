@@ -18,9 +18,12 @@ const express = require("express"),
   connectFlash = require("connect-flash"),
   User = require("./models/user");
 
-mongoose.connect("mongodb://localhost:27017/confetti_cuisine", {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/confetti_cuisine",
+  {
+    useNewUrlParser: true,
+  }
+);
 mongoose.set("useCreateIndex", true);
 
 app.set("port", process.env.PORT || 3000);
